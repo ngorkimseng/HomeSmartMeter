@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+	<class name="com.keylesson.EntityClasses.Data" table="data"
+		dynamic-update="true">
+		<id name="ID" type="int">    <!-- Here user_id is pojo class datamember and id is Database table column 
+				name -->
+			<column name="ID" />    <!-- Hibernate first column should contain primary key that's why we have 
+				given like this -->
+		</id>
+
+		<property name="power" type="int">
+			<column name="power" />
+		</property>
+
+		<property name="water" type="int">
+			<column name="water" />
+		</property>
+
+		<property name="created_at" type="timestamp">
+			<column name="created_at" />
+		</property>
+
+		<property name="updated_at" type="timestamp">
+			<column name="updated_at" />
+		</property>
+
+		<many-to-one name="room" class="com.keylesson.EntityClasses.Room"
+			fetch="select">
+			<column name="room_ID" not-null="true" />
+		</many-to-one>
+	</class>
+
+</hibernate-mapping>
